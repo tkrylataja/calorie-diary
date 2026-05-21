@@ -691,7 +691,8 @@ ${ctx}
       body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:sys,messages:chatHistory})
     });
     const data = await resp.json();
-    const reply = data.content?.[0]?.text||'Щось пішло не так 😕';
+console.log('API response:', JSON.stringify(data));
+const reply = data.content?.[0]?.text || (data.error ? `Помилка: ${data.error.message}` : 'Щось пішло не так 🙁');
     chatHistory.push({role:'assistant',content:reply});
     const foodMatch = reply.match(/<<ADD_FOOD>>([\s\S]*?)<<END>>/);
     if(foodMatch){
