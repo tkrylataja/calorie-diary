@@ -685,7 +685,7 @@ ${ctx}
 Активність: <<ADD_ACTIVITY>>{"name":"...","kcal":0}<<END>>
 Після JSON — коротке підтвердження з залишком калорій. Якщо не знаєш точно — давай розумну оцінку.`;
   try {
-    const resp = await fetch('https://api.anthropic.com/v1/messages',{
+    const resp = await fetch('https://calorie-proxy.tkrylataja.workers.dev',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:sys,messages:chatHistory})
